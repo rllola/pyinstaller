@@ -20,8 +20,10 @@ hiddenimports, binaries, datas = add_qt5_dependencies(__file__)
 # Include the web engine process, translations, and resources.
 rel_data_path = ['PyQt5', 'Qt']
 if compat.is_darwin:
+    print('IS DARWIN !')
     # This is based on the layout of the Mac wheel from PyPi.
     data_path = pyqt5_library_info.location['DataPath']
+    print(data_path)
     libraries = ['QtCore', 'QtWebEngineCore', 'QtQuick', 'QtQml', 'QtNetwork',
                  'QtGui', 'QtWebChannel', 'QtPositioning']
     for i in libraries:
@@ -30,6 +32,7 @@ if compat.is_darwin:
             os.path.join(*(rel_data_path + ['lib'])), True)
     datas += [(os.path.join(data_path, 'lib', 'QtWebEngineCore.framework',
                             'Resources'), os.curdir)]
+    print(datas)
 else:
     locales = 'qtwebengine_locales'
     resources = 'resources'
